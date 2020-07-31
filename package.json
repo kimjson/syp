@@ -10,11 +10,16 @@
     "deploy:prod": "vercel --prod"
   },
   "dependencies": {
+    "@types/open-graph-scraper": "^4.3.0",
+    "mysql": "^2.18.1",
     "next": "latest",
     "next-auth": "^3.0.1",
+    "open-graph-scraper": "^4.5.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.0",
+    "typeorm": "^0.2.25",
     "vercel": "^19.2.0"
   },
   "devDependencies": {

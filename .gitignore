@@ -2,6 +2,7 @@
 
 # 커스텀
 .env
+ormconfig.json
 
 # dependencies
 /node_modules

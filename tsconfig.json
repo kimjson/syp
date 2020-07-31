@@ -16,7 +16,17 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/entity/*": ["entity/*"],
+      "@/interfaces/*": ["interfaces/*"],
+      "@/utils/*": ["utils/*"],
+      "@/pages/*": ["pages/*"],
+    }
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
