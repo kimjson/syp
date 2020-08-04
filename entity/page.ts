@@ -15,6 +15,9 @@ export default class Page extends BaseEntity {
     @Column("text")
     description?: string;
 
+    @Column()
+    date!: Date;
+
     @CreateDateColumn()
     createdAt!: Date;
 
