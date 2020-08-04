@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import ogs from 'open-graph-scraper';
+import got from 'got';
 
 import Page from '@/entity/page';
 import {connect, close} from '@/utils/db';
+import metascraper, {Meta} from '@/utils/metascraper';
 
 type Handler = (req: NextApiRequest, res: NextApiResponse) => any;
 
@@ -10,15 +11,10 @@ const post: Handler = async (req, res) => {
   const {url} = req.body;
 
   try {
-    const {result} = await ogs({url});
-
-    if (result.success) {
-      const {ogTitle, ogUrl, ogDescription} = result;
-      const page = Page.create({title: ogTitle, url: ogUrl, description: ogDescription});
-      res.json(await page.save()); 
-    } else {
-      res.status(400);
-    }
+    const response = await got(url);
+    const meta: Meta = await metascraper({html: response.body, url: response.url})
+    const page = Page.create(meta);
+    res.json(await page.save()); 
   } catch (err) {
     console.error(err);
     res.status(500);
