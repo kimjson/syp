@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import Adapters from 'next-auth/adapters'
+
+import User, {UserSchema} from '@/entity/user';
 
 const options = {
   // Configure one or more authentication providers
@@ -20,6 +23,10 @@ const options = {
 
   // A database is optional, but required to persist accounts in a database
   database: process.env.DATABASE_URL,
+  adapter: Adapters.TypeORM.Adapter(
+    process.env.DATABASE_URL,
+    {customModels: {User: {model: User, schema: UserSchema}}}
+  )
 }
 
 export default (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, options)

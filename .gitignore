@@ -3,6 +3,7 @@
 # 커스텀
 .env
 ormconfig.json
+*.sqlite3
 
 # dependencies
 /node_modules

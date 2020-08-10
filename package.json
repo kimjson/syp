@@ -11,6 +11,8 @@
     "deploy:prod": "vercel --prod"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "babel-plugin-transform-typescript-metadata": "^0.3.0",
     "got": "^11.5.1",
     "metascraper": "^5.13.2",
     "metascraper-description": "^5.13.2",
