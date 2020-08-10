@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
+    "predev": "vercel env pull --yes",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
@@ -22,6 +23,7 @@
     "react-dom": "^16.12.0",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.0",
+    "swr": "^0.3.0",
     "typeorm": "^0.2.25",
     "vercel": "^19.2.0"
   },
