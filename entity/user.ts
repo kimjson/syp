@@ -17,7 +17,7 @@ export const UserSchema = {
 }
 
 
-@Entity()
+@Entity({name: 'users'})
 export default class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -28,18 +28,18 @@ export default class User extends BaseEntity {
   @Column({unique: true, nullable: true})
   email?: string
 
-  @Column({type: 'datetime', nullable: true})
+  @Column({name: 'email_verified', type: 'datetime', nullable: true})
   emailVerified?: Date;
 
   @Column({nullable: true})
   image?: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({name: 'created_at'})
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({name: 'updated_at'})
   updatedAt!: Date;
 
-  @OneToMany(type => Page, page => page.user)
-  pages!: Page[];
+  @OneToMany(() => Page, page => page.user)
+  pages?: Page[];
 }

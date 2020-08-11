@@ -15,6 +15,7 @@
     "babel-plugin-transform-typescript-metadata": "^0.3.0",
     "got": "^11.5.1",
     "metascraper": "^5.13.2",
+    "metascraper-date": "^5.14.2",
     "metascraper-description": "^5.13.2",
     "metascraper-title": "^5.13.2",
     "metascraper-url": "^5.13.2",

@@ -1045,6 +1045,32 @@
     url-regex "~5.0.0"
     video-extensions "~1.1.0"
 
+"@metascraper/helpers@^5.14.2":
+  version "5.14.2"
+  resolved "https://registry.yarnpkg.com/@metascraper/helpers/-/helpers-5.14.2.tgz#4c1556d727cef7a2b6c2fa5acab85fd880c7c9e7"
+  integrity sha512-w/5M8ytPU/n/hXmww+5WwKugKVNrE+rCrNnFDVNFAYz1CSFEfFPrTRNHu9XUWdf84bIXUqgeR/8Czel1ej/2hQ==
+  dependencies:
+    audio-extensions "0.0.0"
+    chrono-node "2.1.7"
+    condense-whitespace "~2.0.0"
+    entities "~2.0.3"
+    file-extension "~4.0.5"
+    has-values "~2.0.1"
+    image-extensions "~1.1.0"
+    is-relative-url "~3.0.0"
+    is-uri "~1.2.0"
+    iso-639-3 "~2.1.0"
+    isostring "0.0.1"
+    lodash "~4.17.19"
+    memoize-one "~5.1.1"
+    mime-types "~2.1.27"
+    normalize-url "~5.1.0"
+    smartquotes "~2.3.1"
+    title "~3.4.2"
+    truncate "~2.1.0"
+    url-regex "~5.0.0"
+    video-extensions "~1.1.0"
+
 "@next/react-dev-overlay@9.5.1":
   version "9.5.1"
   resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-9.5.1.tgz#534e84fbd67f8b2ad0f7b8363ae069943a6b5e12"
@@ -2177,6 +2203,13 @@ chrono-node@2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/chrono-node/-/chrono-node-2.1.6.tgz#3ae44dcd465f34da43556fc63cbb63a23b98e945"
   integrity sha512-d3UOLVWf/Fmy75V6cyJHyyeAHJT41vNJqLOsApGfdnWJTG/xUWNjy6j8DGBZPJ3NnR5qNanYrv1MOaziS+0MTw==
+  dependencies:
+    dayjs "^1.8.29"
+
+chrono-node@2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/chrono-node/-/chrono-node-2.1.7.tgz#e33b40c3c872708b9ec8612e11bceed4f72d2995"
+  integrity sha512-6x+15cnjmbaOjdlEziRuT3gc9Qaf5contCe5jxMEKj58D8YYxbWNkrNNhbxAkjXj2VDfyAELk55C6nFPdRZGXQ==
   dependencies:
     dayjs "^1.8.29"
 
@@ -4643,6 +4676,13 @@ merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
+
+metascraper-date@^5.14.2:
+  version "5.14.2"
+  resolved "https://registry.yarnpkg.com/metascraper-date/-/metascraper-date-5.14.2.tgz#fc62ce56cda4977937475eb8bd7a7cd7322ea472"
+  integrity sha512-Mb3LS40S7MoJknVidaCjoIYs9hbjGboKjDvFeX51nqaJYlrGwwcPAKqakLCVceTVP8h2nWS4gIqMQmaj4wUWoQ==
+  dependencies:
+    "@metascraper/helpers" "^5.14.2"
 
 metascraper-description@^5.13.2:
   version "5.13.2"

@@ -1,6 +1,6 @@
-import {Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne} from "typeorm";
+import {Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn} from "typeorm";
 
-import User from '@/entity/user';
+import User from "@/entity/user";
 
 @Entity()
 export default class Page extends BaseEntity {
@@ -9,19 +9,21 @@ export default class Page extends BaseEntity {
     id!: number;
 
     @Column()
-    title?: string;
+    title!: string;
 
     @Column()
-    url?: string;
-    @Column("text")
+    url!: string;
+
+    @Column("text", {nullable: true})
     description?: string;
 
-    @Column()
+    @Column({nullable: true})
     date?: Date;
 
     @CreateDateColumn()
     createdAt!: Date;
 
-    @ManyToOne(type => User, user => user.pages)
+    @ManyToOne(() => User, user => user.pages)
+    @JoinColumn({name : 'userId', referencedColumnName: 'id'})
     user!: any;
 }

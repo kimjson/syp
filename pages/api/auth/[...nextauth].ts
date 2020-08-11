@@ -21,8 +21,6 @@ const options = {
     }),
   ],
 
-  // A database is optional, but required to persist accounts in a database
-  database: process.env.DATABASE_URL,
   adapter: Adapters.TypeORM.Adapter(
     process.env.DATABASE_URL,
     {customModels: {User: {model: User, schema: UserSchema}}}
