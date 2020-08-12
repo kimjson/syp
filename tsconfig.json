@@ -27,6 +27,7 @@
       "@/utils/*": ["utils/*"],
       "@/pages/*": ["pages/*"],
       "@/middlewares/*": ["middlewares/*"],
+      "@/hooks/*": ["hooks/*"],
     }
   },
   "exclude": ["node_modules"],

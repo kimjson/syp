@@ -12,8 +12,11 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@emotion/core": "^10.0.34",
+    "@emotion/styled": "^10.0.27",
     "babel-plugin-transform-typescript-metadata": "^0.3.0",
-    "got": "^11.5.1",
+    "ky": "^0.23.0",
+    "ky-universal": "^0.8.1",
     "metascraper": "^5.13.2",
     "metascraper-date": "^5.14.2",
     "metascraper-description": "^5.13.2",
@@ -26,6 +29,7 @@
     "react-dom": "^16.12.0",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.0",
+    "sweetalert2": "^9.17.1",
     "swr": "^0.3.0",
     "typeorm": "^0.2.25",
     "vercel": "^19.2.0"
