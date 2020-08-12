@@ -26,6 +26,7 @@
       "@/interfaces/*": ["interfaces/*"],
       "@/utils/*": ["utils/*"],
       "@/pages/*": ["pages/*"],
+      "@/middlewares/*": ["middlewares/*"],
     }
   },
   "exclude": ["node_modules"],

@@ -3,8 +3,8 @@ import got from 'got';
 import {getSession} from 'next-auth/client';
 
 import Page from '@/entity/page';
-import {connect, close} from '@/utils/db';
 import metascraper, {Meta} from '@/utils/metascraper';
+import withConnection from '@/middlewares/withConnection';
 import User from '@/entity/user';
 import { getRepository } from 'typeorm';
 
@@ -30,12 +30,10 @@ const post: Handler = async (req, res) => {
   }
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const conn = await connect();
+export default withConnection(async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     await post(req, res);
   } else {
     res.status(405);
   }
-  close(conn);
-}
+})

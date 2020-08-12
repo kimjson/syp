@@ -4,7 +4,7 @@ import { getRepository } from "typeorm";
 
 import User from '@/entity/user';
 import Page from "@/entity/page";
-import {withConnection} from '@/utils/db';
+import withConnection from '@/middlewares/withConnection';
 
 const handler: NextApiHandler = withConnection(async (req, res) => {
   if (req.method === 'GET') {
