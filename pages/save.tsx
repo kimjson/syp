@@ -1,8 +1,9 @@
-import { useRef, FormEvent } from 'react';
+import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import styled from '@emotion/styled';
 import ky from 'ky-universal';
 import Swal from 'sweetalert2'
+import {useRouter} from 'next/router';
 
 const Label = styled.label`
   margin-right: 1em;
@@ -12,14 +13,30 @@ const Input = styled.input`
   margin-right: 1em;
 `;
 
-const IndexPage = () => {
-  const input = useRef<HTMLInputElement>(null);
+const SavePage = () => {
+  const {query} = useRouter();
+  console.warn({query: query.url})
+  const [url, setUrl] = useState('');
+
+  useEffect(() => {
+    if (query.url) {
+      setUrl(query.url as string);
+    }
+  }, [query.url])
+
+  function handleUrlChange(e: ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    if (value) {
+      console.warn({value})
+      setUrl(value);
+    }
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     try {
-      if (input?.current) {
-        await ky.post('http://localhost:3000/api/page', {json: {url: input.current.value}}).json();
+      if (url) {
+        await ky.post('http://localhost:3000/api/page', {json: {url}}).json();
         Swal.fire({
           position: 'top',
           icon: 'success',
@@ -27,7 +44,7 @@ const IndexPage = () => {
           showConfirmButton: false,
           timer: 1500
         })
-        input.current.value = '';
+        setUrl('');
       }
     } catch (err) {
       Swal.fire({
@@ -40,12 +57,14 @@ const IndexPage = () => {
     }
   }
 
+  console.warn({url});
+
   return (
     <Layout title="페이지 저장하기">
       <form onSubmit={handleSubmit}>
         <div>
           <Label htmlFor="url">URL:</Label>
-          <Input type="url" id="url" name="url" size={100} ref={input} />
+          <Input onChange={handleUrlChange} value={url} type="url" id="url" name="url" size={100} />
           <button type="submit">저장</button>
         </div>
       </form>
@@ -53,4 +72,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default SavePage
