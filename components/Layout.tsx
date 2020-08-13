@@ -2,9 +2,11 @@ import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 import useMounted from '@/hooks/useMounted';
 import Container from '@/components/Container.styled';
+import BOOKMARKLET from '@/constants/bookmarklet';
 
 const SpaceBetween = styled.div`
   display: flex;
@@ -20,8 +22,15 @@ const Header = styled.header`
   padding: 1em;
 `;
 
+const NavAnchor = styled.a`
+  margin: 0 1em;
+  cursor: pointer;
+`;
+
 const SlimH1 = styled.h1`
   margin: 0;
+  margin-right: 1em;
+  cursor: pointer;
 `;
 
 
@@ -38,6 +47,10 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
 
   if (!session) signIn();
 
+  function createBookmarklet() {
+    return {__html: BOOKMARKLET}
+  }
+
   return (
     <div>
       <Head>
@@ -47,7 +60,11 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
       </Head>
       <Header>
         <SpaceBetween>
-          <SlimH1>Save Your Page</SlimH1>
+          <VerticalCenter>
+            <Link href="/"><SlimH1>Save Your Page</SlimH1></Link>
+            <Link href="/save"><NavAnchor>저장</NavAnchor></Link>
+            <div dangerouslySetInnerHTML={createBookmarklet()}></div>
+          </VerticalCenter>
           {session && (
             <VerticalCenter>
               <span>{session.user.email}&nbsp;</span>

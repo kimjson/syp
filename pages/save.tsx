@@ -15,7 +15,6 @@ const Input = styled.input`
 
 const SavePage = () => {
   const {query} = useRouter();
-  console.warn({query: query.url})
   const [url, setUrl] = useState('');
 
   useEffect(() => {
@@ -27,7 +26,6 @@ const SavePage = () => {
   function handleUrlChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     if (value) {
-      console.warn({value})
       setUrl(value);
     }
   }
@@ -56,8 +54,6 @@ const SavePage = () => {
       })
     }
   }
-
-  console.warn({url});
 
   return (
     <Layout title="페이지 저장하기">

@@ -28,6 +28,8 @@
       "@/pages/*": ["pages/*"],
       "@/middlewares/*": ["middlewares/*"],
       "@/hooks/*": ["hooks/*"],
+      "@/stylesheets/*": ["stylesheets/*"],
+      "@/constants/*": ["constants/*"],
     }
   },
   "exclude": ["node_modules"],

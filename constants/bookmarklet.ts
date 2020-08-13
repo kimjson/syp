@@ -1,0 +1,1 @@
+export default `<a href="javascript:location.href='http://localhost:3000/save?url='+encodeURIComponent(location.href)">북마크릿 추가 (북마크바로 드래그하세요)</a>`;
