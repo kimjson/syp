@@ -26,4 +26,7 @@ export default class Page extends BaseEntity {
     @ManyToOne(() => User, user => user.pages)
     @JoinColumn({name : 'userId', referencedColumnName: 'id'})
     user!: any;
+
+    @Column({default: false})
+    isRead!: boolean;
 }

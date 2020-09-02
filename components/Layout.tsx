@@ -20,11 +20,7 @@ const VerticalCenter = styled.div`
 
 const Header = styled.header`
   padding: 1em;
-`;
-
-const NavAnchor = styled.a`
-  margin: 0 1em;
-  cursor: pointer;
+  border-bottom: 1px solid black;
 `;
 
 const SlimH1 = styled.h1`
@@ -54,15 +50,14 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
   return (
     <div>
       <Head>
-        <title>{title} - Save Your Page</title>
+        <title>{title} - SaveYourLink</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header>
         <SpaceBetween>
           <VerticalCenter>
-            <Link href="/"><SlimH1>Save Your Page</SlimH1></Link>
-            <Link href="/save"><NavAnchor>저장</NavAnchor></Link>
+            <Link href="/"><SlimH1>SaveYourLink</SlimH1></Link>
             <div dangerouslySetInnerHTML={createBookmarklet()}></div>
           </VerticalCenter>
           {session && (
