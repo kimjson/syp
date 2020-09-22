@@ -1,9 +1,9 @@
 import { NextApiHandler } from 'next'
 import {getSession} from 'next-auth/client';
 
-import Page from '@/entity/page';
-import withConnection from '@/middlewares/withConnection';
-import User from '@/entity/user';
+import Page from '@src/entity/page';
+import withConnection from '@src/middlewares/withConnection';
+import User from '@src/entity/user';
 import { getRepository } from 'typeorm';
 
 const patch: NextApiHandler = async (req, res) => {

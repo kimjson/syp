@@ -3,7 +3,7 @@ import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import Adapters from 'next-auth/adapters'
 
-import User, {UserSchema} from '@/entity/user';
+import User, {UserSchema} from '@src/entity/user';
 
 const options = {
   // Configure one or more authentication providers

@@ -1,5 +1,5 @@
 import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
-import Layout from '@/components/Layout';
+import Layout from '@src/components/Layout';
 import styled from '@emotion/styled';
 import ky from 'ky-universal';
 import Swal from 'sweetalert2'

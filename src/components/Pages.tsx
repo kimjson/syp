@@ -2,8 +2,8 @@ import { FunctionComponent } from "react";
 import styled from '@emotion/styled';
 
 import Page from "@/interfaces/page";
-import BlockLink from '@/components/BlockLink.styled';
-import usePages from '@/hooks/swr/pages';
+import BlockLink from '@src/components/BlockLink.styled';
+import usePages from '@src/hooks/swr/pages';
 import useMounted from "@/hooks/useMounted";
 import ky from "ky-universal";
 

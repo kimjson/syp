@@ -2,10 +2,10 @@ import { NextApiHandler } from 'next'
 import ky from 'ky-universal';
 import {getSession} from 'next-auth/client';
 
-import Page from '@/entity/page';
-import metascraper, {Meta} from '@/utils/metascraper';
-import withConnection from '@/middlewares/withConnection';
-import User from '@/entity/user';
+import Page from '@src/entity/page';
+import metascraper, {Meta} from '@src/utils/metascraper';
+import withConnection from '@src/middlewares/withConnection';
+import User from '@src/entity/user';
 import { getRepository } from 'typeorm';
 
 // https://nextjs.org/docs/api-routes/api-middlewares#extending-the-reqres-objects-with-typescript

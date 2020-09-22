@@ -21,15 +21,7 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/entity/*": ["entity/*"],
-      "@/interfaces/*": ["interfaces/*"],
-      "@/utils/*": ["utils/*"],
-      "@/pages/*": ["pages/*"],
-      "@/middlewares/*": ["middlewares/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/stylesheets/*": ["stylesheets/*"],
-      "@/constants/*": ["constants/*"],
+      "@src/*": ["src/*"],
     }
   },
   "exclude": ["node_modules"],

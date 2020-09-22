@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import ky from 'ky-universal';
 
-import Page from '@/entity/page';
+import Page from '@src/entity/page';
 
 interface PagesResponse {
   data: Page[];

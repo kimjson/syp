@@ -2,9 +2,9 @@ import { NextApiHandler } from "next";
 import { getSession } from 'next-auth/client'
 import { getRepository } from "typeorm";
 
-import User from '@/entity/user';
+import User from '@src/entity/user';
 import Page from "@/entity/page";
-import withConnection from '@/middlewares/withConnection';
+import withConnection from '@src/middlewares/withConnection';
 
 const handler: NextApiHandler = withConnection(async (req, res) => {
   if (req.method === 'GET') {

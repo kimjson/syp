@@ -1,6 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
-import {connect, close} from '@/utils/db';
+import {connect, close} from '@src/utils/db';
 
 export default function withConnection(handler: NextApiHandler) {
   return async function handlerWithConnection(req: NextApiRequest, res: NextApiResponse) {

@@ -1,7 +1,7 @@
 import {Entity, OneToMany, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn, UpdateDateColumn} from 'typeorm';
 import Adapters from "next-auth/adapters"
 
-import Page from '@/entity/page';
+import Page from '@src/entity/page';
 
 const {schema} = Adapters.TypeORM.Models.User
 

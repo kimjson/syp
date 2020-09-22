@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import styled from '@emotion/styled';
 
-import Layout from '@/components/Layout';
-import Pages from '@/components/Pages';
+import Layout from '@src/components/Layout';
+import Pages from '@src/components/Pages';
 
 const ViewRead = styled.div`
   user-select: none;

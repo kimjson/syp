@@ -4,9 +4,9 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-import useMounted from '@/hooks/useMounted';
-import Container from '@/components/Container.styled';
-import BOOKMARKLET from '@/constants/bookmarklet';
+import useMounted from '@src/hooks/useMounted';
+import Container from '@src/components/Container.styled';
+import BOOKMARKLET from '@src/constants/bookmarklet';
 
 const SpaceBetween = styled.div`
   display: flex;
