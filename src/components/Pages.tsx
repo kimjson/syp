@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import styled from '@emotion/styled';
 
-import Page from "@/interfaces/page";
+import Page from "@src/interfaces/page";
 import BlockLink from '@src/components/BlockLink.styled';
 import usePages from '@src/hooks/swr/pages';
-import useMounted from "@/hooks/useMounted";
+import useMounted from "@src/hooks/useMounted";
 import ky from "ky-universal";
 
 interface ItemProps {
@@ -12,7 +12,7 @@ interface ItemProps {
 }
 
 const Item = styled.div`
-  ${({isRead}: ItemProps) => isRead ? 'color: grey' : ''};
+  ${({isRead}: ItemProps) => isRead ? 'color: grey;' : ''}
   padding: 1em;
   &:not(:last-child) {
     border-bottom: 1px solid black;
@@ -48,7 +48,7 @@ const Pages: FunctionComponent<Props> & {Page: FunctionComponent<PageProps>} = (
     );
   }
   
-  return data.filter(page => viewRead || !page.isRead).map((page, i) => <Pages.Page key={i} page={page} refetch={mutate} />)
+  return <>{data.filter(page => viewRead || !page.isRead).map((page, i) => <Pages.Page key={i} page={page} refetch={mutate} />)}</>
 }
 
 Pages.Page = ({page: {id, title, url, description, isRead}, refetch}) => {

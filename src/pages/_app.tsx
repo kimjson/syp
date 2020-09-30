@@ -1,7 +1,7 @@
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
 
-import '@/stylesheets/index.css';
+import '@src/stylesheets/index.css';
 
 export default function App ({ Component, pageProps }: AppProps) {
   return (

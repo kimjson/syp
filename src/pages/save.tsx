@@ -34,7 +34,7 @@ const SavePage = () => {
     e.preventDefault();
     try {
       if (url) {
-        await ky.post('http://localhost:3000/api/page', {json: {url}}).json();
+        await ky.post('/api/page', {json: {url}}).json();
         Swal.fire({
           position: 'top',
           icon: 'success',

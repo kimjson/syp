@@ -1,6 +1,6 @@
 import {Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn} from "typeorm";
 
-import User from "@/entity/user";
+import User from "@src/entity/user";
 
 @Entity()
 export default class Page extends BaseEntity {

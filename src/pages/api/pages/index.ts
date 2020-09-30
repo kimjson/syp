@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/client'
 import { getRepository } from "typeorm";
 
 import User from '@src/entity/user';
-import Page from "@/entity/page";
+import Page from "@src/entity/page";
 import withConnection from '@src/middlewares/withConnection';
 
 const handler: NextApiHandler = withConnection(async (req, res) => {
