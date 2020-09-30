@@ -1,5 +1,7 @@
+const { BASE_URL, NEXTAUTH_URL } = process.env;
+
 module.exports = {
   env: {
-    BASE_URL: `https://${process.env.VERCEL_URL}` || 'http://localhost:3000'
+    BASE_URL: BASE_URL || NEXTAUTH_URL,
   }
 }
