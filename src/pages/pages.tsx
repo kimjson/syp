@@ -1,6 +1,6 @@
 import { signIn, signOut, useSession } from 'next-auth/client'
 
-import Layout from '../components/Layout'
+import Layout from '@src/components/Layout'
 
 const PagesPage = () => {
   const [ session, loading ] = useSession()

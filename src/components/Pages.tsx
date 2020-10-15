@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styled from '@emotion/styled';
 
-import Page from "@src/interfaces/page";
+import Page from "@src/types/page";
 import BlockLink from '@src/components/BlockLink.styled';
 import usePages from '@src/hooks/swr/pages';
 import useMounted from "@src/hooks/useMounted";
