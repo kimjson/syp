@@ -2,7 +2,6 @@ import {Entity, OneToMany, PrimaryGeneratedColumn, Column, BaseEntity, CreateDat
 import Adapters from "next-auth/adapters"
 
 import Page from '@src/entity/page';
-import Collection from '@src/entity/collection';
 
 const {schema} = Adapters.TypeORM.Models.User
 
