@@ -1,39 +1,30 @@
-import { NextApiHandler } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 import ky from 'ky-universal';
-import {getSession} from 'next-auth/client';
+import {PrismaClient} from '@prisma/client';
 
-import Page from '@src/entity/page';
 import metascraper, {Meta} from '@src/utils/metascraper';
-import withConnection from '@src/middlewares/withConnection';
-import User from '@src/entity/user';
-import { getRepository } from 'typeorm';
+import {withDefaultBook} from '@src/middlewares';
 
+const prisma = new PrismaClient();
+
+// TODO: 미들웨어의 결과로 req를 extend 하는 게 좋은지 아니면 추가적인 핸들러 파라미터로 넘겨줄지 재고해보기
 // https://nextjs.org/docs/api-routes/api-middlewares#extending-the-reqres-objects-with-typescript
-const post: NextApiHandler = async (req, res) => {
+const post = withDefaultBook(prisma)(async (req, res, defaultBook) => {
   try {
-    const session = await getSession({req});
-    if (!session) {
-      return res.status(401).json({message: '로그인 정보가 틀립니다'});
-    }
     const response = await ky(req.body.url);
-    const meta: Meta = await metascraper({html: await response.text(), url: response.url})
-    const page = Page.create(meta);
-    const user = await getRepository(User).findOne({email: session.user.email});
-    if (!user) {
-      return res.status(401).json({message: '로그인 정보가 틀립니다'});
-    }
-    page.user = user;
-    return res.json(await page.save());
+    const meta: Meta = await metascraper({html: await response.text(), url: response.url});
+    const page = await prisma.page.create({data: {...meta, book: {connect: {id: defaultBook.id}}}})
+    return res.json(page);
   } catch (err) {
-    console.error({err})
+    console.error({err});
     return res.status(500).end();
   }
-}
+})
 
-export default withConnection(async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     await post(req, res);
   } else {
     res.status(405);
   }
-})
+}

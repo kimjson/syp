@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import Adapters from 'next-auth/adapters'
+import { PrismaClient } from "@prisma/client";
 
-import User, {UserSchema} from '@src/entity/user';
+const prisma = new PrismaClient();
 
 const options = {
   // Configure one or more authentication providers
@@ -21,10 +22,7 @@ const options = {
     }),
   ],
 
-  adapter: Adapters.TypeORM.Adapter(
-    process.env.DATABASE_URL,
-    {customModels: {User: {model: User, schema: UserSchema}}}
-  )
+  adapter: Adapters.Prisma.Adapter({ prisma }),
 }
 
 export default (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, options)

@@ -1,0 +1,8 @@
+# Prisma Migrate lockfile v1
+
+20201015115653-initial-migration
+20201015115938-capitalize-page
+20201015123249-remap-page-to-pages
+20201015123544-add-books
+20201015123829-rename-book-to-books
+20201015124154-make-book-title-optional

@@ -1,33 +1,26 @@
 import { NextApiHandler } from "next";
-import { getSession } from 'next-auth/client'
-import { getRepository } from "typeorm";
+import { PrismaClient } from "@prisma/client";
 
-import User from '@src/entity/user';
-import Page from "@src/entity/page";
-import withConnection from '@src/middlewares/withConnection';
+import {withUser} from '@src/middlewares';
 
-const handler: NextApiHandler = withConnection(async (req, res) => {
+const prisma = new PrismaClient();
+
+const get = withUser(prisma)(async (_, res, user) => {
+  try {
+    // TODO: 요게 유저의 북을 거친 페이지까지 모두 표시해주는지 체크. 아마 아닐 듯?
+    return res.json({data: await user.pages()});
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({message: '알 수 없는 오류가 발생했습니다'});
+  }
+})
+
+const handler: NextApiHandler = async (req, res) => {
   if (req.method === 'GET') {
-    try {
-      const session = await getSession({req})
-      if (!session) {
-        return res.status(401).json({message: '로그인 정보가 틀립니다'});
-      }
-      const {email} = session.user;
-      const userRepository = getRepository(User);
-      const user = await userRepository.findOne({email});
-      if (!user) {
-        return res.status(401).json({message: '로그인 정보가 틀립니다'});
-      }
-      return res.json({data: await Page.find({where: {user}})});
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({message: '알 수 없는 오류가 발생했습니다'});
-    }
-    
+    await get(req, res);
   } else {
     return res.status(405).end();
   }
-})
+}
 
 export default handler;

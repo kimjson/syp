@@ -1,10 +1,8 @@
 import { NextApiHandler } from 'next'
 import {getSession} from 'next-auth/client';
+import { PrismaClient } from '@prisma/client';
 
-import Page from '@src/entity/page';
-import withConnection from '@src/middlewares/withConnection';
-import User from '@src/entity/user';
-import { getRepository } from 'typeorm';
+const prisma = new PrismaClient();
 
 const patch: NextApiHandler = async (req, res) => {
   try {
@@ -12,22 +10,23 @@ const patch: NextApiHandler = async (req, res) => {
     if (!session) {
       return res.status(401).json({message: '로그인 정보가 틀립니다'});
     }
-    const user = await getRepository(User).findOne({email: session.user.email});
-    const page = await Page.findOne(req.query.id as string, {where: {user}});
+    const page = await prisma.page.findOne({where: {userId: user?.id, id: Number(req.query.id)}})
     if (!page) {
       return res.status(404).json({message: '링크를 찾을 수 없습니다'});
     }
-    return res.json(await Page.update(page.id, req.body));
+    return res.json(await prisma.page.update({where: {id: Number(req.query.id)}, data: req.body}))
   } catch (err) {
     console.error({err})
     return res.status(500).end();
   }
 }
 
-export default withConnection(async (req, res) => {
+const handler: NextApiHandler = async (req, res) => {
   if (req.method === 'PATCH') {
     await patch(req, res);
   } else {
     res.status(405);
   }
-})
+}
+
+export default handler;
