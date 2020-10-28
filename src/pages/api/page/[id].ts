@@ -1,8 +1,30 @@
 import { NextApiHandler } from 'next'
 import {getSession} from 'next-auth/client';
 import { PrismaClient } from '@prisma/client';
+import flowRight from 'lodash/flowRight';
+
+import { withTryCatch, withUser } from '@src/middlewares';
+import {pipe} from '@src/utils';
 
 const prisma = new PrismaClient();
+
+const patch = flowRight(
+  withTryCatch,
+  withUser(prisma)
+)(async (req, res, user) => {
+  const {id: userId} = await user || {};
+  const page = await prisma.page.update({where: {id: Number(req.query.id), userId}, data: req.body})
+  return res.json(page);
+})
+
+const patch = withUser(prisma)(async (req, res, user) => {
+  try {
+
+  } catch (err) {
+    console.error({err});
+    return res.status(500).end();
+  }
+})
 
 const patch: NextApiHandler = async (req, res) => {
   try {
