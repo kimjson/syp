@@ -24,7 +24,7 @@
     "metascraper-url": "^5.13.2",
     "mysql": "^2.18.1",
     "next": "^9.5.3",
-    "next-auth": "^3.0.1",
+    "next-auth": "^3.29.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "reflect-metadata": "^0.1.13",
